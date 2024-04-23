@@ -77,6 +77,11 @@ main {
   color: #ffffff;
 }
 
+.text_overflow {
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
 .link {
   color: #2d50ff;
 }

@@ -114,6 +114,11 @@ main{
 
 }
 
+.text_overflow {
+	text-overflow: ellipsis;
+	word-break: break-all;
+}
+
 .link{
 	color:s.color('s-blue');
 	

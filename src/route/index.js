@@ -245,19 +245,27 @@ router.post('/product-create', function (req, res) {
 })
 
 // ================================================================
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+  Product.deleteById(Number(id))
 
+  res.render('alert', {
+    style: 'alert',
+    info: 'Product delete',
+  })
+})
+// ================================================================
 router.get('/product-edit', function (req, res) {
   const { id } = req.query
   const product = Product.getById(Number(id))
-
   if (product) {
-    res.render('product-edit', {
+    return res.render('product-edit', {
       style: 'product-edit',
       data: {
-        name: this.name,
-        price: this.price,
-        id: this.id,
-        description: this.description,
+        name: product.name,
+        price: product.price,
+        id: product.id,
+        description: product.description,
       },
     })
   } else {
@@ -267,10 +275,11 @@ router.get('/product-edit', function (req, res) {
     })
   }
 })
-// ================================================================
 
+// ================================================================
 router.post('/product-edit', function (req, res) {
-  const { id, name, price, description } = req.body
+  const { id, price, name, description } = req.body
+
   const product = Product.updateById(Number(id), {
     name,
     price,
@@ -281,7 +290,7 @@ router.post('/product-edit', function (req, res) {
   if (product) {
     res.render('alert', {
       style: 'alert',
-      info: `Information about the product ${name} has been ${id} updated`,
+      info: `Information about the product ${name}  has been ${id} updated`,
     })
   } else {
     res.render('alert', {
@@ -289,19 +298,10 @@ router.post('/product-edit', function (req, res) {
       info: `Error`,
     })
   }
+  // ↑↑ сюди вводимо JSON дані
 })
 
 // ================================================================
-
-router.get('/product-delete', function (req, res) {
-  const { id } = req.query
-  Product.deleteById(Number(id))
-
-  res.render('alert', {
-    style: 'alert',
-    info: 'Product delete',
-  })
-})
 
 // Підключаємо роутер до бек-енду
 module.exports = router

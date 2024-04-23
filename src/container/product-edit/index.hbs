@@ -12,29 +12,31 @@
 
 			<div class="products__frame">
 				<h3 class="products__info">Information for product</h3>
-				<form method="POST" action="/product-create">
-					<div class="products__content">
+				{{#with data}}
+
+				<form method="POST" action="/product-edit">
+					{{!-- <div class="products__content"> --}}
 						<div>
 							<div class="products__field  margin_top">
 								<div class="products__column">
 									<label for="name" class="products__label">Product Name:</label>
-									<input type="text" name="name" class="products__input">
+									<input type="text" name="name" class="products__input" value="{{name}}">
 								</div>
 
 								<div class="products__column">
 									<label for="price" class="products__label">Price:</label>
-									<input type="number" name="price" class="products__input">
+									<input type="number" name="price" class="products__input" value="{{price}}">
 								</div>
 
 								<div class="products__column">
 									<label for="id" class="products__label">ID:</label>
-									<input type="number" name="id" class="products__input">
+									<input type="number" name="id" class="products__input " value="{{id}}" readonly>
 								</div>
 							</div>
 
 							<div class="products__field-info  margin_top">
 								<label for="description" class="products__label">Description of product:</label>
-								<input type="text" name="description" class="products__input products__description"
+								<input type="text" name="description" class="products__input text_overflow"
 									value="{{description}}">
 								<label for="description" class="products__label-down">Appears product card</label>
 							</div>
@@ -51,8 +53,10 @@
 							</div>
 						</div>
 
-					</div>
+						{{!--
+					</div> --}}
 				</form>
+				{{/with}}
 			</div>
 		</div>
 	</section>
