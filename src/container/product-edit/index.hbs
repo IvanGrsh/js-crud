@@ -1,0 +1,68 @@
+{{!
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+}}
+
+<main class='main'>
+	<section>
+		<div class="products">
+			<h1 class="products__title">Product update</h1>
+			{{!-- <div><a href="/product-list" class="link">Return</a></div> --}}
+
+
+			<div class="products__frame">
+				<h3 class="products__info">Information for product</h3>
+				<form method="POST" action="/product-create">
+					<div class="products__content">
+						<div>
+							<div class="products__field  margin_top">
+								<div class="products__column">
+									<label for="name" class="products__label">Product Name:</label>
+									<input type="text" name="name" class="products__input">
+								</div>
+
+								<div class="products__column">
+									<label for="price" class="products__label">Price:</label>
+									<input type="number" name="price" class="products__input">
+								</div>
+
+								<div class="products__column">
+									<label for="id" class="products__label">ID:</label>
+									<input type="number" name="id" class="products__input">
+								</div>
+							</div>
+
+							<div class="products__field-info  margin_top">
+								<label for="description" class="products__label">Description of product:</label>
+								<input type="text" name="description" class="products__input products__description"
+									value="{{description}}">
+								<label for="description" class="products__label-down">Appears product card</label>
+							</div>
+						</div>
+
+						<div class="products__action margin_top">
+							<div>
+								<button class="products__button color_blue">Save updates</button>
+							</div>
+
+							<div>
+								<button class="products__button color_red"><a href="/product-delete?id={{id}}"
+										class='products__link'>Delete</a></button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</main>
+
+
+
+{{!
+Цей код містить лише те, що буде виводитись в
+
+<body>
+	Адже наш layout/default.hbs має вже структуру HTML
+	}}
